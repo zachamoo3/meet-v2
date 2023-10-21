@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+// src/App.js
+
+import CitySearch from './components/CitySearchs';
+import EventList from './components/EventList';
+import NumberOfEvents from './components/NumberOfEvents';
+import { useState, useEffect } from 'react';
+import { getEvents, extractLocations } from './api';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [events, setEvents] = useState([]);
+  const [currentNumberOfEvents, setCurrentNumberOfEvents] = useState(32);
+  const [allLocations, setAllLocations] = useState([]);
+  const [currentCity, setCurrentCity] = useState("See all cities");
+
+  useEffect(() => {
+    fetchData();
+  }, [currentCity]);
+
+  const fetchData = async () => {
+    const allEvents = await getEvents();
+    const filteredEvents = currentCity === "See all cities" ?
+      allEvents :
+      allEvents.filter(event => event.location === currentCity)
+    setEvents(filteredEvents.slice(0, currentNumberOfEvents));
+    setAllLocations(extractLocations(allEvents));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CitySearch
+        allLocations={allLocations}
+        setCurrentCity={setCurrentCity}
+      />
+      <NumberOfEvents />
+      <EventList events={events} />
     </div>
   );
 }
