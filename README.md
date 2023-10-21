@@ -89,3 +89,10 @@ Gherkin Scenarios.
 
 How this project will utilize serverless functions:
     The Meet App will use serverless functions to authenticate the user's device with their Google account.  Then, the authenticated user can access, use, and view the Meet App until their authentication expires.
+
+Troubleshooting "gh-pages" Deployments
+    Sometimes, running `npm run deploy` doesn't affect your repository, despite it providing a success message when the command has been completed.
+    If this occurs, delete your "gh-pages" branch from your repository.  You can run the following command to delete the branch in the terminal.  Make sure that you're inside the following project folder: `git push origin --delete gh-pages`.
+    Then, rerun `npm run deploy`.  You don't need to recreate the branch before running this, as this command will automatically create the branch if it doesn't exist (which it doesn't, as you just deleted it). This should successfully deploy your app.
+    You don't need to worry about losing the commit history for "gh-pages", because you'll find that once you run the deploy command again, the "gh-pages" commits from the previous version of the branch are restored.
+    
