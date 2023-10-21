@@ -1,6 +1,6 @@
 // src/App.js
 
-import CitySearch from './components/CitySearchs';
+import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
 import { useState, useEffect } from 'react';
