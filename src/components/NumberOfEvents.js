@@ -1,13 +1,9 @@
 // src/components/NumberOfEvents.js
 
-import { useState } from "react";
-
-const NumberOfEvents = () => {
-    const [numberOfEvents, setNumberOfEvents] = useState('32');
-
+const NumberOfEvents = ({ setCurrentNumberOfEvents }) => {
     const handleInputChanged = (event) => {
         const value = event.target.value;
-        setNumberOfEvents(value);
+        setCurrentNumberOfEvents(value);
     }
 
     return (
@@ -15,9 +11,9 @@ const NumberOfEvents = () => {
             <input
                 type="text"
                 className="event-number"
-                placeholder="32"
-                value={numberOfEvents}
+                defaultValue="32"
                 onChange={handleInputChanged}
+                data-testid="numberOfEventsInput"
             />
         </div>
     )
