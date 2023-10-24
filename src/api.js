@@ -71,12 +71,21 @@ export const getAccessToken = async () => {
         const searchParams = new URLSearchParams(window.location.search);
         const code = await searchParams.get('code');
         if (!code) {
-            const response = await fetch(
-                'https://s8s0myl3la.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url'
-            );
-            const result = await response.json();
-            const { authUrl } = result;
-            return (window.location.href = authUrl);
+            fetch('https://s8s0myl3la.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (json) {
+                    const result = JSON.stringify(json);
+                    const { authUrl } = JSON.parse(result);
+                    return (window.location.href = authUrl);
+                });
+            // const response = await fetch(
+            //     'https://s8s0myl3la.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url'
+            // );
+            // const result = await response.json();
+            // const { authUrl } = result;
+            // return (window.location.href = authUrl);
         }
         return code && getToken(code);
     }
