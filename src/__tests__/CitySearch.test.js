@@ -13,6 +13,7 @@ describe('<CitySearch /> component', () => {
             <CitySearch
                 allLocations={[]}
                 setCurrentCity={() => { }}
+                setInfoAlert={() => { }}
             />
         );
     });
@@ -41,7 +42,12 @@ describe('<CitySearch /> component', () => {
         const user = userEvent.setup();
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
-        CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
+        CitySearchComponent.rerender(
+            <CitySearch
+                allLocations={allLocations}
+                setInfoAlert={() => { }}
+            />
+        );
 
         // user types "Berlin" in city textbox
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
@@ -77,7 +83,7 @@ describe('<CitySearch /> component', () => {
 describe('<CitySearch /> integration', () => {
     test('renders suggestions list when the app is rendered', async () => {
         const user = userEvent.setup();
-        const AppComponent = render(<App />);
+        const AppComponent = render(<App setInfoAlert={() => { }} />);
         const AppDOM = AppComponent.container.firstChild;
 
         const CitySearchDOM = AppDOM.querySelector('#city-search');
