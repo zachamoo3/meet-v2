@@ -6,7 +6,12 @@ import userEvent from "@testing-library/user-event";
 
 describe('<NumberOfEvents /> component', () => {
     beforeEach(() => {
-        render(<NumberOfEvents setCurrentNumberOfEvents={() => { }} />);
+        render(
+            <NumberOfEvents
+                setCurrentNumberOfEvents={() => { }}
+                setErrorAlert={() => { }}
+            />
+        );
     });
 
     test('contains an element with the role of the textbox', () => {

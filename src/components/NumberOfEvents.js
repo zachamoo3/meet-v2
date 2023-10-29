@@ -1,9 +1,19 @@
 // src/components/NumberOfEvents.js
 
-const NumberOfEvents = ({ setCurrentNumberOfEvents }) => {
+const NumberOfEvents = ({ setCurrentNumberOfEvents, setErrorAlert }) => {
+
     const handleInputChanged = (event) => {
         const value = event.target.value;
-        setCurrentNumberOfEvents(value);
+
+        let errorText;
+        if (isNaN(value) || value <= 0) {
+            errorText = 'Please enter a number greater than 0.';
+            setErrorAlert(errorText);
+        } else {
+            errorText = '';
+            setErrorAlert(errorText);
+            setCurrentNumberOfEvents(value);
+        }
     }
 
     return (
