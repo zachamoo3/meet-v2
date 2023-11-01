@@ -52,12 +52,12 @@ class ErrorAlert extends Alert {
     };
 };
 
-// class WarningAlert extends Alert {
-//     constructor(props) {
-//         super(props);
-//         this.color = 'rgb()'; // yellow
-//         this.bgColor = 'rgb()'; // light yellow
-//     };
-// };
+class WarningAlert extends Alert {
+    constructor(props) {
+        super(props);
+        this.color = 'rgb()'; // yellow
+        this.bgColor = 'rgb()'; // light yellow
+    };
+};
 
 export { InfoAlert, ErrorAlert };
