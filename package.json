@@ -1,8 +1,8 @@
 {
 	"name": "meet-v2",
 	"version": "0.1.0",
-	"private": true,
-	"homepage": "https://zachamoo3.github.io/meet-v2",
+	"private": false,
+	"homepage": "https://zachamoo3.github.io/meet-v2/",
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",
