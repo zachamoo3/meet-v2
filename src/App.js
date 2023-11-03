@@ -42,7 +42,7 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<div className='alerts-container'>
+			<div className="alerts-container">
 				{infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
 				{errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
 				{warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
@@ -56,7 +56,7 @@ const App = () => {
 				setCurrentNumberOfEvents={setCurrentNumberOfEvents}
 				setErrorAlert={setErrorAlert}
 			/>
-			<div className='charts-container'>
+			<div className="charts-container">
 				<EventGenresChart
 					events={events}
 				/>
