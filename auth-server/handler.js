@@ -1,7 +1,7 @@
 'use strict';
 
-const { google } = require("googleapis");
-const calendar = google.calendar("v3");
+const { google } = require('googleapis');
+const calendar = google.calendar('v3');
 
 /*
 	SCOPES allows you to set access levels; this is set to readonly for now
@@ -9,7 +9,7 @@ const calendar = google.calendar("v3");
 	For more info, check out the SCOPES documentation at this link:
 	https://developers.google.com/identity/protocols/oauth2/scopes
 */
-const SCOPES = ["https://www.googleapis.com/auth/calendar.events.public.readonly"];
+const SCOPES = ['https://www.googleapis.com/auth/calendar.events.public.readonly'];
 
 /*
 	If you see 'process.env', this means the value is in the 'config.json' file.
@@ -18,7 +18,7 @@ const SCOPES = ["https://www.googleapis.com/auth/calendar.events.public.readonly
 */
 const { CLIENT_SECRET, CLIENT_ID, CALENDAR_ID } = process.env;
 const redirect_uris = [
-	"https://zachamoo3.github.io/meet-v2"
+	'https://zachamoo3.github.io/meet-v2'
 ];
 
 const oAuth2Client = new google.auth.OAuth2(
@@ -40,8 +40,8 @@ module.exports.getAuthURL = async () => {
 		Gogle Console. Also, any passed scopes are the ones users will see when
 		the consent screen is displayed to them.
 	*/
-	const authURL = oAuth2Client.generateAuthUrl({
-		access_type: "offline",
+	const authUrl = oAuth2Client.generateAuthUrl({
+		access_type: 'offline',
 		scope: SCOPES,
 	});
 
@@ -52,7 +52,7 @@ module.exports.getAuthURL = async () => {
 			'Access-Control-Allow-Credentials': true,
 		},
 		body: JSON.stringify({
-			authURL,
+			authUrl,
 		}),
 	};
 };
@@ -109,7 +109,7 @@ module.exports.getCalendarEvents = async (event) => {
 				auth: oAuth2Client,
 				timeMin: new Date().toISOString(),
 				singleEvents: true,
-				orderBy: "startTime",
+				orderBy: 'startTime',
 			},
 			(error, response) => {
 				if (error) {
