@@ -18,7 +18,7 @@ const SCOPES = ["https://www.googleapis.com/auth/calendar.events.public.readonly
 */
 const { CLIENT_SECRET, CLIENT_ID, CALENDAR_ID } = process.env;
 const redirect_uris = [
-	"https://zachamoo3.github.io/meet-v2/"
+	"https://zachamoo3.github.io/meet-v2"
 ];
 
 const oAuth2Client = new google.auth.OAuth2(
