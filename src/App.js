@@ -14,7 +14,7 @@ const App = () => {
 	const [events, setEvents] = useState([]);
 	const [currentNumberOfEvents, setCurrentNumberOfEvents] = useState(32);
 	const [allLocations, setAllLocations] = useState([]);
-	const [currentCity, setCurrentCity] = useState("See all cities");
+	const [currentCity, setCurrentCity] = useState('See all cities');
 	const [infoAlert, setInfoAlert] = useState('');
 	const [errorAlert, setErrorAlert] = useState('');
 	const [warningAlert, setWarningAlert] = useState('');
